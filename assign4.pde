@@ -1,3 +1,4 @@
+//20200518 debug version
 PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered;
 PImage groundhogIdle, groundhogLeft, groundhogRight, groundhogDown;
 PImage bg, life, cabbage, stone1, stone2, soilEmpty;
@@ -355,6 +356,12 @@ void draw() {
           playerY = SOIL_SIZE * playerRow;
         }else{
           playerY = (1f - float(playerMoveTimer) / playerMoveDuration + playerRow) * SOIL_SIZE;
+          
+          //detect if soil health is 0
+          if(playerRow < SOIL_ROW_COUNT - 1){    
+          soilHealth[playerCol][playerRow+1] = 0;
+          }
+          
         }
         break;
       }
